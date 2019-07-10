@@ -1,3 +1,3 @@
-# MS_Thesis
+# MS_Thesis Part-1
 
-All the programming work regarding my fifth year project will go here.
+Final_SNR branch stores all the ROOT codes that were used for the SNR Analysis of HGCal (EE + FH)
