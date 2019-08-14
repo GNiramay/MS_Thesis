@@ -1,0 +1,137 @@
+HGCNtupleVariables.h:   TBranch        *b_event;   //!
+HGCNtupleVariables.h:   TBranch        *b_run;   //!
+HGCNtupleVariables.h:   TBranch        *b_pdgID;   //!
+HGCNtupleVariables.h:   TBranch        *b_beamEnergy;   //!
+HGCNtupleVariables.h:   TBranch        *b_trueBeamEnergy;   //!
+HGCNtupleVariables.h:   TBranch        *b_energyLostEE;
+HGCNtupleVariables.h:   TBranch        *b_energyLostFH;
+HGCNtupleVariables.h:   TBranch        *b_energyLostBH;
+HGCNtupleVariables.h:   TBranch        *b_energyLostBeam;
+HGCNtupleVariables.h:   TBranch        *b_energyLostOutside;
+HGCNtupleVariables.h:   TBranch        *b_energyLeakTransverseEE;
+HGCNtupleVariables.h:   TBranch        *b_energyLeakTransverseFH;
+HGCNtupleVariables.h:   TBranch        *b_energyLeakTransverseAH;
+HGCNtupleVariables.h:   TBranch        *b_energyLeakLongitudinal;
+HGCNtupleVariables.h:   TBranch        *b_energyLeakResidual;
+HGCNtupleVariables.h:   TBranch        *b_sim_energyAH;
+HGCNtupleVariables.h:   /* TBranch        *b_energyAbsorbedEE; */
+HGCNtupleVariables.h:   /* TBranch        *b_energyAbsorbedFH; */
+HGCNtupleVariables.h:   TBranch        *b_NRechits;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_detid;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_module;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_layer;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_chip;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_channel;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_type;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_x;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_y;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_z;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_iu;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_iv;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_energy;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_energy_noHG;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_amplitudeHigh;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_amplitudeLow;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_hg_goodFit;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_lg_goodFit;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_hg_saturated;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_lg_saturated;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_fully_calibrated;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_TS2High;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_TS2Low;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_TS3High;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_TS3Low;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_Tot;   //!
+HGCNtupleVariables.h:   /* TBranch        *b_rechit_time;   //! */
+HGCNtupleVariables.h:   TBranch        *b_rechit_timeMaxHG;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_timeMaxLG;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_toaRise;   //!
+HGCNtupleVariables.h:   TBranch        *b_rechit_toaFall;   //!
+HGCNtupleVariables.h:   TBranch        *b_ntracks;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_1;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_1;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_2;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_2;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_3;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_3;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_4;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_4;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_5;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_5;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_6;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_6;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_7;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_7;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_8;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_8;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_9;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_9;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_10;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_10;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_11;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_11;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_12;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_12;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_13;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_13;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_14;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_14;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_15;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_15;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_16;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_16;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_17;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_17;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_18;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_18;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_19;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_19;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_20;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_20;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_21;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_21;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_22;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_22;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_23;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_23;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_24;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_24;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_25;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_25;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_26;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_26;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_27;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_27;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactX_HGCal_layer_28;   //!
+HGCNtupleVariables.h:   TBranch        *b_impactY_HGCal_layer_28;   //!
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_29;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_29;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_30;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_30;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_31;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_31;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_32;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_32;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_33;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_33;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_34;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_34;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_35;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_35;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_36;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_36;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_37;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_37;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_38;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_38;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_39;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_39;
+HGCNtupleVariables.h:   TBranch         *b_impactX_HGCal_layer_40;
+HGCNtupleVariables.h:   TBranch         *b_impactY_HGCal_layer_40;
+HGCNtupleVariables.h:   TBranch        *b_trackChi2_X;   //!
+HGCNtupleVariables.h:   TBranch        *b_trackChi2_Y;   //!
+HGCNtupleVariables.h:   TBranch        *b_dwcReferenceType;   //!
+HGCNtupleVariables.h:   TBranch        *b_m_x;   //!
+HGCNtupleVariables.h:   TBranch        *b_m_y;   //!
+HGCNtupleVariables.h:   TBranch        *b_b_x;   //!
+HGCNtupleVariables.h:   TBranch        *b_b_y;   //!

@@ -1,0 +1,671 @@
+#ifndef AnalyzeHGCOctTB_H
+#define AnalyzeHGCOctTB_H
+
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#include <vector>
+#include "HGCNtupleVariables.h"
+#include "TH1F.h"
+#include "TH2F.h"
+#include "TH3F.h"
+#include "TGraph.h"
+#include "TF1.h"
+#include "TFile.h"
+#include "TProfile.h"
+#include "TLorentzVector.h"
+#include "TDirectory.h"
+
+class AnalyzeHGCOctTB : public HGCNtupleVariables{
+
+ public:
+  AnalyzeHGCOctTB(const TString &inputFileList="foo.txt", const char *outFileName="histo.root",const char *dataset="data", const char *config="alpha", const char* energy = "-1");
+  ~AnalyzeHGCOctTB();
+  //Bool_t   FillChain(TChain *chain, TChain *chain2, TChain *chain3, const TString &inputFileList);
+  Bool_t   FillChain(TChain *chain, TChain *chain2, const TString &inputFileList);
+  /* Bool_t   FillChain(TChain *chain, const TString &inputFileList); */
+  Long64_t LoadTree(Long64_t entry);
+  void     EventLoop(const char *);
+  void     BookHistogram(const char *, const char *, const char* energy);
+
+  void moduleMap_init(const char *);
+  void Alignment_Map_Init();
+  void Noise_Map_Init();
+
+
+  TFile *oFile;
+  // TDirectory *d_Nrechit_layer;
+  // TDirectory *d_rechitEn_layer;
+  // /* TDirectory *d_track_info; */
+  // //TDirectory *d_rechit_en_layer; 
+  // /* TDirectory *d_adcHG; */
+  // TDirectory *d_tracks;
+  // TDirectory *d_layers[40];
+
+  // TH2F* h_trackX_trackY[40];
+  // TH2F* h_cogX_cogY[40];
+  // TH2F* h_cogX_trackX[40];
+  // TH2F* h_cogY_trackY[40];
+  // TH2F* h_dX_dY[40];
+  // TH1F* h_dX[40];
+  // TH1F* h_dY[40];
+  // TH2F* h_dX_dY_track_vs_rechit[40];
+  // /* TDirectory *d_EE[28]; */
+  // // TDirectory *d_FH[12][7];
+  // TDirectory *d_weightScan;
+  // TDirectory *d_weightScan_EH;
+  // TH1F* h_rechit_energy_FB_rel_weightScan[20];
+  // TH1F* h_rechit_energy_EH_rel_weightScan[50];
+  // TGraph* h_reso_weights;
+  // TGraph* h_reso_weights_EH;
+
+  
+  const char *conf_;  
+  // /* TH1F *h_ADChg[128]; */
+  // /* TH1F *h_adcHG_EE[28][128]; */
+  // /* TH1F *h_adcHG_EE_track[28][128]; */
+  // /* TH1F *h_adcHG_FH[12][7][128]; */
+  // /* TH1F *h_adcHG_FH_track[12][7][128]; */
+  // TH1F *h_NRechits_EE[28];
+  // TH1F *h_NRechits_EE_L1_chip0;
+  // TH1F *h_NRechits_EE_L1_chip1;
+  // TH1F *h_NRechits_EE_L1_chip2;
+  // TH1F *h_NRechits_EE_L1_chip3;
+
+  // /* TH1F *h_NRechits_FH[12][7]; */
+  // TH1F *h_NRechits_FH[12];
+
+
+  // TH1F *h_Rechits_En_EE[28];
+  // TH1F *h_Rechits_En_FH[12];
+
+  // // TH1F* h_nrechits;
+  // // TH1F* h_nrechit_1evt[5];	// Tracking hits in a single event
+  // TH1F* h_configuration;
+  // TH1F* h_particleID;
+  // TH1F* h_nTracks;
+  // TH1F* h_beamEnergy;
+  // TH1F* h_runNumber;
+  // TH1F* h_moduleID;
+  // TH1F* h_nRechits_layer[28];
+
+  // TH1F* h_rechit_energy_raw_all;
+  // TH1F* h_rechit_energy_raw_EE;
+  // TH1F* h_rechit_energy_raw_FH;
+  // TH1F* h_rechit_energy_weighted;
+  // TH1F* h_rechit_energy_FB_FH_alone_raw;
+  // TH1F* h_rechit_energy_FH_FB_weighted;
+
+
+  // TH1F* h_rechit_energy_raw_region3;
+  // TH1F* h_rechit_energy_raw_EE_alone_region3;
+  // TH1F* h_rechit_energy_raw_FH_AH_alone_region3;
+  // TH1F* h_rechit_energy_part_weighted_region3;
+  // TH1F* h_rechit_energy_full_weighted_region3;
+  // TH1F* h_rechit_energy_full_weighted_inGev_region3;
+  // TH1F* h_sim_energy_inGev_region3;
+  // TH1F* h_rechit_energy_full_weighted_inGev_region3_withoutAHCAL;
+
+  // TH1F* h_energy_region2_gev;
+  // TH1F* h_rechit_energy_inEE_region2_mips;
+  // TH1F* h_sim_energy_inGev_region2;
+  // TH1F* h_energy_region2_gev_withoutAHCAL;
+  // TH2F* h_energy_FH_vs_AHCAL_region2_gev;
+  // TH1F* h_energy_all_gev;
+  // TH1F* h_sim_energy_all_gev;
+
+  // TH1F* h_total_sim_energy;
+  
+
+  // TH2F* dX_dY_layer_2;
+
+  // /* TH1F* h_rechit_energy_weighted_EH; */
+  // /* TH1F* h_rechit_energy_FB_FH_alone_raw_EH; */
+  // /* TH1F* h_rechit_energy_FH_FB_weighted_EH; */
+
+  // TH2F* h_Nrechit_EE_vs_FH_region3; 
+  // TH2F* h_Nrechit_EE_vs_FH_CHECK_FOR_UNCLASSIFIED;
+  // TH2F* h_Nrechit_EE_vs_FH_CHECK_FOR_UNCLASSIFIED_R1;
+  // TH2F* h_Nrechit_EE_vs_FH_CHECK_FOR_UNCLASSIFIED_R2;
+  // TH2F* h_Nrechit_EE_vs_FH_CHECK_FOR_UNCLASSIFIED_R3;
+ 
+
+  // TH2F* h_Nrechit_EE_vs_FH;
+  // TH2F* h_Nrechits_EE_FH_FB;
+
+  // //TH2F* h_energy_FH_AH_FB;
+
+  // TH2F* h_rechit_energy_FH_AHCAL_FB_raw;
+  // TH2F* h_rechit_energy_FH_AHCAL_FB_weighted;
+  // TH2F* h_rechit_energy_EE_FHAHCAL_EH_mips;
+  // TH2F* h_rechit_energy_EE_FHAHCAL_EH_gev;
+  // TH2F* h_rechit_energy_EE_FHAHCAL_EH_gev_DEBUG;
+
+  // TH1F* h_Nrechit_EE;
+  // TH1F* h_Nrechit_FH;
+  // TH1F* h_Nrechit_AH;
+
+  // TH1F* h_shower_start;
+  // TH1F* h_shower_start_dN_dLambda;
+  
+  // TH1F* h_shower_start_full_collapsed_EE;
+  // TH1F* h_shower_start_part_collapsed_EE;
+
+  // TH1F* h_shower_start_reg1;
+  // TH1F* h_shower_start_reg2;
+  // TH1F* h_shower_start_reg3;
+  // TH1F* h_shower_start_CHECK_FOR_UNCLASSIFIED;
+  // TH1F* h_shower_start_reg3_DEBUG;
+  // TH2F* h_rechit_En_NRechits;
+
+  int inEnergy_;
+
+  //// Niramay's histograms
+  // TH2F* EE_FH_Leak[40];	// energy leakage as a function of shower start
+  // TH1F* EE_Leak[40];
+  // TH1F* FH_Leak[40];
+  // TH1F* TotLeak[40];		// Total Leakage per SS
+  // TH1F* RecEn[40];		// Total rec energy as a function of shower start
+  // TH1F* WtEnSum[40];		// Weighted energy sum
+  // TH2F* WtComp[40];		// weighted rechit En in EE vs FH
+  // TH2F* GoodStat[14];		// WtComp with layers clubbed for good stats
+  // TH2F* Leak_vs_EE[40];		// Leak EE vs rechit_energy EE
+  // TH2F* Leak_vs_FH[40];		// Leak FH vs rechit_energy FH
+
+  TH2F* Gen_leak_EE_1;
+  TH2F* Gen_leak_FH_1;
+
+  TH2F* Gen_leak_EE_2;
+  TH2F* Gen_leak_FH_2;
+
+  // TH2F* LeakFr_Abs[40];		// frac. of leakage vs absorbed en.
+  TH2F* LeakFr_EE[6];		// LeakFr vs. EE rec in compartments
+  TH2F* LeakFr_FH[6];		// LeakFr vs. EE rec in compartments
+};
+#endif
+
+#ifdef AnalyzeHGCOctTB_cxx
+
+void AnalyzeHGCOctTB::BookHistogram(const char *outFileName, const char* conf,  const char* energy) {
+  cout<<"BOOK HIST 1 = "<<energy<<endl;
+  char* hname = new char[200];
+  char* dir_name = new char[200];
+  double y_max = -1.0;
+  double x_2D_max = -1.0;
+  double xbin = -1.0;
+  double y_2D_max = -1.0;
+  double mip_x_max = 3000;
+  double mip_y_max = 1500;
+  
+  if(!strcmp(energy, "20")) {
+    y_max = 100.0;
+    x_2D_max = 3000;
+    xbin = 300;
+    y_2D_max = 1500;
+    inEnergy_ = 20;
+  }
+  else if(!strcmp(energy, "50")) {
+    y_max = 150.0;
+    /* x_2D_max = 5000; */
+    /* x_2D_max = 5000; */
+    /* xbin = 500; */
+    x_2D_max = 10000;
+    xbin = 500;
+    y_2D_max = 200;
+    inEnergy_ = 50;
+  }
+  else if(!strcmp(energy, "80")) {
+    y_max = 200.0;
+    /* x_2D_max = 8000; */
+    /* xbin = 400; */
+    x_2D_max = 12000;
+    xbin = 300;
+    y_2D_max = 3000;
+    inEnergy_ = 80;
+  }
+  else if(!strcmp(energy, "100")) {
+    y_max = 300.0;
+    /* x_2D_max = 10000; */
+    /* xbin = 500; */
+    x_2D_max = 18000;
+    xbin = 360;
+    y_2D_max = 3000;
+    inEnergy_ = 100;
+  }
+  else if(!strcmp(energy, "120")) {
+    y_max = 400.0;
+    /* x_2D_max = 12000; */
+    /* xbin = 300; */
+    x_2D_max = 20000;
+    xbin = 400;
+    y_2D_max = 3200;
+    inEnergy_ = 120;
+  }
+  else if(!strcmp(energy, "200")) {
+    y_max = 600.0;
+    /* x_2D_max = 18000; */
+    /* xbin = 360; */
+    x_2D_max = 40000;
+    xbin = 800;
+    y_2D_max = 4800;
+    inEnergy_ = 200;
+  }
+  else if(!strcmp(energy, "250")) {
+    y_max = 700.0;
+    /* x_2D_max = 25000; */
+    /* xbin = 500; */
+    x_2D_max = 50000;
+    xbin = 1000;
+    y_2D_max = 6000;
+    inEnergy_ = 250;
+  }
+  else if(!strcmp(energy, "300")) {
+    y_max = 800.0;
+    x_2D_max = 60000;
+    /* x_2D_max = 20000; */
+    xbin = 1000;
+    y_2D_max = 6000;
+    inEnergy_ = 300;
+  }
+  else {
+    cout<<"invalid energy!!!"<<endl; 
+    return;
+  }
+  conf_ = conf;
+  oFile = new TFile(outFileName, "recreate");
+
+  ////////////// Niramay's Histograms
+
+  // for(int i=0;i<40;i++){
+  //   char* Title1 = new char[100];
+  //   char* Title2 = new char[100];
+  //   sprintf(Title1,"EE_FH_Leak_%i",i+1);
+  //   sprintf(Title2,"Transverse Energy leakage when shower started in layer %i",i+1);
+  //   EE_FH_Leak[i] = new TH2F(Title1,Title2,inEnergy_/2,0,inEnergy_/2,inEnergy_/2,0,inEnergy_/2); // Range, nbins experimental
+  // }
+  char* Title1 = new char[500];
+  char* Title2 = new char[500];
+
+  sprintf(Title1,"Gen_leak_EE_1");
+  sprintf(Title2,"Transverse leakage vs rec. energy in EE when SS in EE");
+  Gen_leak_EE_1 = new TH2F(Title1,Title2,100,0,inEnergy_*150,100,0,inEnergy_/4);
+  Gen_leak_EE_1->GetXaxis()->SetTitle("Total rechit energy in EE (in mips)");
+  Gen_leak_EE_1->GetYaxis()->SetTitle("Transverse leakage in EE (in GeV)");
+
+  sprintf(Title1,"Gen_leak_FH_1");
+  sprintf(Title2,"Transverse leakage vs rec. energy in FH when SS in EE");
+  Gen_leak_FH_1 = new TH2F(Title1,Title2,100,0,inEnergy_*30,100,0,inEnergy_/4);
+  Gen_leak_FH_1->GetXaxis()->SetTitle("Total rechit energy in FH (in mips)");
+  Gen_leak_FH_1->GetYaxis()->SetTitle("Transverse leakage in FH (in GeV)");
+
+
+  sprintf(Title1,"Gen_leak_EE_2");
+  sprintf(Title2,"Transverse leakage vs rec. energy in EE when SS in FH");
+  Gen_leak_EE_2 = new TH2F(Title1,Title2,100,0,inEnergy_*150,100,0,inEnergy_/4);
+  Gen_leak_EE_2->GetXaxis()->SetTitle("Total rechit energy in EE (in mips)");
+  Gen_leak_EE_2->GetYaxis()->SetTitle("Transverse leakage in EE (in GeV)");
+
+  sprintf(Title1,"Gen_leak_FH_2");
+  sprintf(Title2,"Transverse leakage vs rec. energy in FH when SS in FH");
+  Gen_leak_FH_2 = new TH2F(Title1,Title2,100,0,inEnergy_*30,100,0,inEnergy_/4);
+  Gen_leak_FH_2->GetXaxis()->SetTitle("Total rechit energy in FH (in mips)");
+  Gen_leak_FH_2->GetYaxis()->SetTitle("Transverse leakage in FH (in GeV)");
+
+  // for(int i=0;i<40;i++){
+  //   char* Title1 = new char[500];
+  //   char* Title2 = new char[500];
+
+  //   sprintf(Title1,"EE_Leak_%i",i+1);
+  //   sprintf(Title2,"Transverse Energy leakage in EE when shower started in layer %i",i+1);
+  //   EE_Leak[i] = new TH1F(Title1,Title2,100,0,inEnergy_/4);
+
+  //   sprintf(Title1,"FH_Leak_%i",i+1);
+  //   sprintf(Title2,"Transverse Energy leakage in FH when shower started in layer %i",i+1);
+  //   FH_Leak[i] = new TH1F(Title1,Title2,100,0,inEnergy_/4);
+
+  //   sprintf(Title1,"TotLeak_%i",i+1);
+  //   // sprintf(Title2,"Total leakage when shower started in layer %i",i+1);
+  //   sprintf(Title2,"Total Transverse leakage when shower started in layer %i",i+1);
+  //   TotLeak[i] = new TH1F(Title1,Title2,100,0,inEnergy_);
+
+  //   sprintf(Title1,"RecEn_%i",i+1);
+  //   sprintf(Title2,"#Sigma rechit enrgy in EE+FH",i+1);
+  //   RecEn[i] = new TH1F(Title1,Title2,75,0,inEnergy_*150);
+
+  //   sprintf(Title1,"WtEnSum_%i",i+1);
+  //   // sprintf(Title2,"Weighted energy sum when shower started in layer %i",i+1);
+  //   sprintf(Title2,"weighted rec. en. + total transverse leakage when shower started in layer %i",i+1);
+  //   // RecEn[i] = new TH1F(Title1,Title2,75,0,inEnergy_*1.5);
+  //   RecEn[i] = new TH1F(Title1,Title2,100,0,inEnergy_*2);
+
+  //   sprintf(Title1,"WtComp_%i",i+1);
+  //   sprintf(Title2,"#beta(En_{FH}) vs En_{EE} when  shower started in layer %i",i+1);
+  //   WtComp[i] = new TH2F(Title1,Title2,100,0,inEnergy_*150,100,0,inEnergy_*150);
+
+  //   sprintf(Title1,"Leak_vs_EE_%i",i+1);
+  //   sprintf(Title2,"Total Transverse leakage vs rec. energy in EE when SS = %i",i+1);
+  //   Leak_vs_EE[i] = new TH2F(Title1,Title2,100,0,inEnergy_*150,200,0,inEnergy_/2);
+  //   Leak_vs_EE[i]->GetXaxis()->SetTitle("Total rechit energy in EE (in mips)");
+  //   Leak_vs_EE[i]->GetYaxis()->SetTitle("Total Transverse leakage (in GeV)");
+
+  //   sprintf(Title1,"Leak_vs_FH_%i",i+1);
+  //   sprintf(Title2,"Total Transverse leakage vs rec. energy in FH when SS = %i",i+1);
+  //   Leak_vs_FH[i] = new TH2F(Title1,Title2,100,0,inEnergy_*75,200,0,inEnergy_/2);
+  //   Leak_vs_FH[i]->GetXaxis()->SetTitle("Total rechit energy in FH (in mips)");
+  //   Leak_vs_FH[i]->GetYaxis()->SetTitle("Total Transverse leakage (in GeV)");
+
+  //   sprintf(Title1,"LeakFr_Abs_%i",i+1);
+  //   sprintf(Title2,"leakage fraction vs. energy absorbed in SS component (EE/FH) for SS = %i",i+1);
+  //   LeakFr_Abs[i] = new TH2F(Title1,Title2,100,0,inEnergy_,100,0,1);
+  //   LeakFr_Abs[i]->GetXaxis()->SetTitle("Total energy in absorber of (EE or FH) (in GeV)");
+  //   LeakFr_Abs[i]->GetYaxis()->SetTitle("Leakage fraction");
+
+  //   // if(i<4){
+  //   //   sprintf(Title1,"GoodStat_%i",i);
+  //   //   sprintf(Title2,"#beta(En_{FH}) vs En_{EE} when  shower started in layer %i",i+1);
+  //   //   GoodStat[i] = new TH2F(Title1,Title2,100,0,inEnergy_*150,100,0,inEnergy_*150);
+  //   // }
+  //   // else if(i==4 || i==6 || i==8 || i==10 || i==12 || i==14 || i==16){
+  //   //   sprintf(Title1,"GoodStat_%i",2+i/2);
+  //   //   sprintf(Title2,"#beta(En_{FH}) vs En_{EE} when  shower started in layer %i or %i",i+1,i+2);
+  //   //   GoodStat[2+i/2] = new TH2F(Title1,Title2,100,0,inEnergy_*150,100,0,inEnergy_*150);
+  //   // }
+  //   // else if(i==18 || i==21 || i==24){
+  //   //   sprintf(Title1,"GoodStat_%i",5+i/3);
+  //   //   sprintf(Title2,"#beta(En_{FH}) vs En_{EE} when  shower started in layer %i or %i or %i",i+1,i+2,i+3);
+  //   //   GoodStat[5+i/3] = new TH2F(Title1,Title2,100,0,inEnergy_*150,100,0,inEnergy_*150);
+  //   // }
+  // }
+
+  TString HH[6] = {"1","2","3","4","5","6"}; // the index needed for following hists
+  TString DD[6]={"0 to 0.35","0.35 to 0.75","0.75 to 1.03","1.03 to 1.43","1.43 to 2.7","more than 2.7",};// The depth of each compartment
+
+  for(int i=0;i<6;i++)
+    {
+      TString title = "LeakFr_EE_";
+      LeakFr_EE[i] = new TH2F(title+HH[i],"Leakfr vs EE_rchits | SS at depth "+DD[i]+" #lambda",150,0,150*inEnergy_,100,0,0.5);
+      LeakFr_EE[i]->GetXaxis()->SetTitle("Total EE rechit_energy (in mips)");
+      LeakFr_EE[i]->GetYaxis()->SetTitle("Leakage fraction = #frac{Transverse Leakage}{Beam Energy}");
+
+      title = "LeakFr_FH_";
+      LeakFr_FH[i] = new TH2F(title+HH[i],"Leakfr vs FH_rchits | SS at depth "+DD[i]+" #lambda",100,0,50*inEnergy_,100,0,0.5);
+      LeakFr_FH[i]->GetXaxis()->SetTitle("Total FH rechit_energy (in mips)");
+      LeakFr_FH[i]->GetYaxis()->SetTitle("Leakage fraction = #frac{Transverse Leakage}{Beam Energy}");
+    }
+
+  ////////////// The END
+  
+
+}
+
+void AnalyzeHGCOctTB::Alignment_Map_Init() {
+  char* f_name = new char[200];
+  sprintf(f_name,"../Alignment_Map.txt");
+  std::ifstream in(f_name);
+  if(!in) { 
+    cout<<"ERROR => "<<f_name<<" Not found"<<endl;
+    //return;
+    exit(0);
+  }
+
+  //int layer;
+  std::pair<float,float> dx_dy;
+  std::pair<int, std::pair<float,float> > temp;
+  int layer;
+  float dx,dy;
+  while(in>>layer>>dx>>dy) {
+    //run_layer = std::make_pair(run,layer);
+    dx_dy = std::make_pair(dx,dy);
+    temp = std::make_pair(layer,dx_dy);
+    align_map.insert(temp);
+  }
+
+  std::cout<<"INFO: Alignment MAP initialized successfully!!!"<<endl;
+}
+
+void AnalyzeHGCOctTB::Noise_Map_Init() {
+  char* f_name = new char[200];
+  sprintf(f_name,"../Noise_Map.txt");
+  std::ifstream in(f_name);
+  //int layer;
+  if(!in) { 
+    cout<<"ERROR => "<<f_name<<" Not found"<<endl;
+    //return;
+    exit(0);
+  }
+  std::pair<int,int> mod_chip;
+  std::pair<std::pair<int,int>, float> temp;
+  int layer,mod_id,mod_pos,chip;
+  float noise;
+  while(in>>layer>>mod_id>>mod_pos>>chip>>noise) {
+    //run_layer = std::make_pair(run,layer);
+    mod_chip = std::make_pair(mod_id,chip);
+    temp = std::make_pair(mod_chip,noise);
+    noise_map.insert(temp);
+  }
+
+  std::cout<<"INFO: Noise MAP initialized successfully!!!"<<endl;
+}
+
+
+void AnalyzeHGCOctTB::moduleMap_init(const char* config) {
+  char *f_name = new char[200];
+
+  if(strcmp(config,"alpha")==0 || strcmp(config,"config1")==0) {
+    sprintf(f_name,"../config_maps/moduleMAP_config1.txt");
+    cout<<"\n\nINFO: Mapping module configuration ALPHA (oct10-oct17) "<<endl;
+    cout<<"INFO: Mapping EE[0]/FH[1]::Layer #[1-40]::Position on Layer[0 for EE]&[1-7 for FH] consult figure for Daisy structure configuration!!!"<<endl;
+
+  }
+  else if(strcmp(config,"bravo")==0 || strcmp(config,"config2")==0) {
+    sprintf(f_name,"../config_maps/moduleMAP_config2.txt");
+    cout<<"\n\nINFO: Mapping module configuration BRAVO (17oct-22oct) "<<endl;
+    cout<<"INFO: Mapping EE[0]/FH[1]::Layer #[1-40]::Position on Layer[0 for EE]&[1-7 for FH] consult figure for Daisy structure configuration!!!"<<endl;
+
+  }
+  else if(strcmp(config,"charlie")==0  || strcmp(config,"config3")==0) {
+    sprintf(f_name,"../config_maps/moduleMAP_config3.txt");
+    cout<<"\n\nINFO: Mapping module configuration CHARLIE (23Oct-4Nov) "<<endl;
+    cout<<"INFO: Mapping EE[0]/FH[1]::Layer #[1-40]::Position on Layer[0 for EE]&[1-7 for FH] consult figure for Daisy structure configuration!!!"<<endl;
+
+  }
+  else {
+    cout<<"\n\nERROR: Incorrect configuration entered "<<endl;
+    cout<<" Allowed configuration :\n alpha = Configuration 1 (10Oct-17Nov) \n bravo = Configuration 2 (17Oct-22Oct) \n charlie = Configuration 3 (23Oct-17Nov)"<<endl;
+    return;
+    
+  }
+
+  std::ifstream in(f_name);
+  if(!in) { 
+    cout<<"ERROR => "<<f_name<<" Not found"<<endl;
+    //return;
+    exit(0);
+  }
+  int modID_, part_, layer_, pos_;
+  cout<<"File name = "<<f_name<<endl;
+  while(in>>modID_>>part_>>layer_>>pos_){
+    std::pair<int, std::vector<int>> temp_pair;
+    std::vector<int> temp_vector;
+    temp_vector.push_back(part_);
+    temp_vector.push_back(layer_);
+    temp_vector.push_back(pos_);
+    temp_pair = std::make_pair(modID_,temp_vector);
+    module_map.insert(temp_pair);
+  }
+
+  cout<<"INFO: Module Mapping Done!!! "<<endl<<endl;
+
+
+}
+// void AnalyzeHGCOctTB::offical_calib_init() {
+//   char *f_name = new char[200];
+//   sprintf(f_name,"/home/shubham/work/HGCAL/CERNTB/CERN_5_oct_2018/txt_files/official_calib.txt");
+//   std::ifstream in(f_name);
+//   if(!in){
+//     cout<<"Could not find "<<f_name<<endl;
+//     return;
+//   }
+//   int layer_, module_, chip_, channel_;
+//   long en_chan;
+//   float adc_;
+//   while(in>>layer_>>module_>>chip_>>channel_>>adc_){
+//     en_chan = chip_*1000+channel_;
+//     std::pair<int, int> temp;
+//     temp = std::make_pair(layer_,en_chan);
+//     std::pair<std::pair<int,int>, float> temp1;
+//     temp1 = std::make_pair(temp, adc_);
+//     offical_calib_map.insert(temp1);
+//   }
+// }
+
+// void AnalyzeHGCOctTB::my_calib_init() {
+//   char *f_name = new char[200];
+//   sprintf(f_name,"/home/shubham/work/HGCAL/CERNTB/CERN_5_oct_2018/txt_files/ADC_MIP_v11.txt");
+//   std::ifstream in(f_name);
+//   if(!in){
+//     cout<<"Could not find "<<f_name<<endl;
+//     return;
+//   }
+//   int layer_, chip_, channel_,entry;
+//   long en_chan;
+//   float adc_,chi2,mip_err;
+//   while(in>>layer_>>chip_>>channel_>>adc_>>chi2>>mip_err>>entry){
+//     en_chan = chip_*1000+channel_;
+//     std::pair<int,int> temp;
+//     temp = std::make_pair(layer_+1,en_chan);
+//     std::pair<std::pair<int,int>, float> temp1;
+//     temp1 = std::make_pair(temp, adc_);
+//     my_calib_map.insert(temp1);
+//   }
+// }
+
+AnalyzeHGCOctTB::AnalyzeHGCOctTB(const TString &inputFileList, const char *outFileName, const char* dataset, const char* config, const char* energy) {
+
+  TChain *tree = new TChain("rechitntupler/hits");
+  TChain *tree2 = new TChain("trackimpactntupler/impactPoints");
+  /* TChain *tree3 = new TChain("bigtree"); */
+
+
+  if( ! FillChain(tree, tree2, inputFileList) ) {
+    std::cerr << "Cannot get the tree " << std::endl;
+  } else {
+    std::cout << "Initiating analysis of dataset " << dataset << std::endl;
+  }
+
+  /* if( ! FillChain(tree, tree2, tree3, inputFileList) ) { */
+  /*   std::cerr << "Cannot get the tree " << std::endl; */
+  /* } else { */
+  /*   std::cout << "Initiating analysis of dataset " << dataset << std::endl; */
+  /* } */
+
+  /* if( ! FillChain(tree, inputFileList) ) { */
+  /*   std::cerr << "Cannot get the tree " << std::endl; */
+  /* } else { */
+  /*   std::cout << "Initiating analysis of dataset " << dataset << std::endl; */
+  /* } */
+
+  //HGCNtupleVariables::Init(tree, tree2, tree3);
+  HGCNtupleVariables::Init(tree, tree2);
+
+  BookHistogram(outFileName, config, energy);
+  moduleMap_init(config);
+  Alignment_Map_Init();
+  Noise_Map_Init();
+  // offical_calib_init();
+  // my_calib_init();
+  
+}
+//Bool_t AnalyzeHGCOctTB::FillChain(TChain *chain, TChain *chain2, TChain *chain3, const TString &inputFileList) {
+Bool_t AnalyzeHGCOctTB::FillChain(TChain *chain, TChain *chain2, const TString &inputFileList) {
+/* Bool_t AnalyzeHGCOctTB::FillChain(TChain *chain, const TString &inputFileList) { */
+
+  ifstream infile(inputFileList, ifstream::in);
+  std::string buffer;
+
+  if(!infile.is_open()) {
+    std::cerr << "** ERROR: Can't open '" << inputFileList << "' for input" << std::endl;
+    return kFALSE;
+  }
+
+  std::cout << "TreeUtilities : FillChain " << std::endl;
+  while(1) {
+    infile >> buffer;
+    if(!infile.good()) break;
+    //std::cout << "Adding tree from " << buffer.c_str() << std::endl;                                                              
+    chain->Add(buffer.c_str());
+    chain2->Add(buffer.c_str());
+    /* chain3->Add(buffer.c_str()); */
+
+  }
+  std::cout << "No. of Entries in chain  : " << chain->GetEntries() << std::endl;
+  std::cout << "No. of Entries in chain2 : " << chain2->GetEntries() << std::endl;
+  /* std::cout << "No. of Entries in chain3 : " << chain3->GetEntries() << std::endl; */
+
+  return kTRUE;
+}
+
+Long64_t AnalyzeHGCOctTB::LoadTree(Long64_t entry) {
+  // Set the environment to read one entry                                                                                          
+  if (!fChain) return -5;
+  Long64_t centry = fChain->LoadTree(entry);
+  if (centry < 0) return centry;
+  if (!fChain->InheritsFrom(TChain::Class()))  return centry;
+  TChain *chain = (TChain*)fChain;
+  if (chain->GetTreeNumber() != fCurrent) {
+    fCurrent = chain->GetTreeNumber();
+    //    Notify();
+  }
+
+  if (!fChain2) return -5;
+  Long64_t centry2 = fChain2->LoadTree(entry);
+  if (centry2 < 0) return centry2;
+  if (!fChain2->InheritsFrom(TChain::Class()))  return centry2;
+  TChain *chain2 = (TChain*)fChain2;
+  if (chain2->GetTreeNumber() != fCurrent) {
+    fCurrent = chain->GetTreeNumber();
+    //    Notify();
+  }
+
+  /* if (!fChain3) return -5; */
+  /* Long64_t centry3 = fChain3->LoadTree(entry); */
+  /* if (centry3 < 0) return centry3; */
+  /* if (!fChain3->InheritsFrom(TChain::Class()))  return centry3; */
+  /* TChain *chain3 = (TChain*)fChain3; */
+  /* if (chain3->GetTreeNumber() != fCurrent) { */
+  /*   fCurrent = chain->GetTreeNumber(); */
+  /*   //    Notify(); */
+  /* } */
+  
+  //if (centry==centry2)
+  return centry;
+  // cout<<"centry = "<<centry<<endl;
+  // if(centry>0)
+  //   return centry;
+  // else return -1;
+}
+
+AnalyzeHGCOctTB::~AnalyzeHGCOctTB() { 
+
+  // if (!fChain || !fChain2) return;
+  // delete fChain->GetCurrentFile();
+  // delete fChain2->GetCurrentFile();
+  // oFile->cd();
+  // oFile->Write();
+  // oFile->Close();
+
+
+  if (!fChain) return;
+  delete fChain->GetCurrentFile();
+  oFile->cd();
+  oFile->Write();
+  oFile->Close();
+
+}
+
+#endif
+
+/*  LocalWords:  Nrechit EE R1 FH GetXaxis SetTitle Sumw2 TH2F reg3 NRechits
+ */
+/*  LocalWords:  GetYaxis SetTitleOffset
+ */

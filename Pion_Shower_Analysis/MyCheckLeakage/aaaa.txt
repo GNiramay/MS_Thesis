@@ -1,0 +1,139 @@
+event;   //!
+run;   //!
+pdgID;   //!
+beamEnergy;   //!
+trueBeamEnergy;   //!
+energyLostEE;
+energyLostFH;
+energyLostBH;
+energyLostBeam;
+energyLostOutside;
+energyLeakTransverseEE;
+energyLeakTransverseFH;
+energyLeakTransverseAH;
+energyLeakLongitudinal;
+energyLeakResidual;
+sim_energyAH;
+/* energyAbsorbedEE; */
+/* energyAbsorbedFH; */
+NRechits;   //!
+rechit_detid;   //!
+rechit_module;   //!
+rechit_layer;   //!
+rechit_chip;   //!
+rechit_channel;   //!
+rechit_type;   //!
+rechit_x;   //!
+rechit_y;   //!
+rechit_z;   //!
+rechit_iu;   //!
+rechit_iv;   //!
+rechit_energy;   //!
+rechit_energy_noHG;   //!
+rechit_amplitudeHigh;   //!
+rechit_amplitudeLow;   //!
+rechit_hg_goodFit;   //!
+rechit_lg_goodFit;   //!
+rechit_hg_saturated;   //!
+rechit_lg_saturated;   //!
+rechit_fully_calibrated;   //!
+rechit_TS2High;   //!
+rechit_TS2Low;   //!
+rechit_TS3High;   //!
+rechit_TS3Low;   //!
+rechit_Tot;   //!
+/* rechit_time;   //! */
+rechit_timeMaxHG;   //!
+rechit_timeMaxLG;   //!
+rechit_toaRise;   //!
+rechit_toaFall;   //!
+ntracks;   //!
+
+impactX_HGCal_layer_1;   //!
+impactY_HGCal_layer_1;   //!
+impactX_HGCal_layer_2;   //!
+impactY_HGCal_layer_2;   //!
+impactX_HGCal_layer_3;   //!
+impactY_HGCal_layer_3;   //!
+impactX_HGCal_layer_4;   //!
+impactY_HGCal_layer_4;   //!
+impactX_HGCal_layer_5;   //!
+impactY_HGCal_layer_5;   //!
+impactX_HGCal_layer_6;   //!
+impactY_HGCal_layer_6;   //!
+impactX_HGCal_layer_7;   //!
+impactY_HGCal_layer_7;   //!
+impactX_HGCal_layer_8;   //!
+impactY_HGCal_layer_8;   //!
+impactX_HGCal_layer_9;   //!
+impactY_HGCal_layer_9;   //!
+impactX_HGCal_layer_10;   //!
+impactY_HGCal_layer_10;   //!
+impactX_HGCal_layer_11;   //!
+impactY_HGCal_layer_11;   //!
+impactX_HGCal_layer_12;   //!
+impactY_HGCal_layer_12;   //!
+impactX_HGCal_layer_13;   //!
+impactY_HGCal_layer_13;   //!
+impactX_HGCal_layer_14;   //!
+impactY_HGCal_layer_14;   //!
+impactX_HGCal_layer_15;   //!
+impactY_HGCal_layer_15;   //!
+impactX_HGCal_layer_16;   //!
+impactY_HGCal_layer_16;   //!
+impactX_HGCal_layer_17;   //!
+impactY_HGCal_layer_17;   //!
+impactX_HGCal_layer_18;   //!
+impactY_HGCal_layer_18;   //!
+impactX_HGCal_layer_19;   //!
+impactY_HGCal_layer_19;   //!
+impactX_HGCal_layer_20;   //!
+impactY_HGCal_layer_20;   //!
+impactX_HGCal_layer_21;   //!
+impactY_HGCal_layer_21;   //!
+impactX_HGCal_layer_22;   //!
+impactY_HGCal_layer_22;   //!
+impactX_HGCal_layer_23;   //!
+impactY_HGCal_layer_23;   //!
+impactX_HGCal_layer_24;   //!
+impactY_HGCal_layer_24;   //!
+impactX_HGCal_layer_25;   //!
+impactY_HGCal_layer_25;   //!
+impactX_HGCal_layer_26;   //!
+impactY_HGCal_layer_26;   //!
+impactX_HGCal_layer_27;   //!
+impactY_HGCal_layer_27;   //!
+impactX_HGCal_layer_28;   //!
+impactY_HGCal_layer_28;   //!
+
+TBranch         *b_impactX_HGCal_layer_29;
+TBranch         *b_impactY_HGCal_layer_29;
+TBranch         *b_impactX_HGCal_layer_30;
+TBranch         *b_impactY_HGCal_layer_30;
+TBranch         *b_impactX_HGCal_layer_31;
+TBranch         *b_impactY_HGCal_layer_31;
+TBranch         *b_impactX_HGCal_layer_32;
+TBranch         *b_impactY_HGCal_layer_32;
+TBranch         *b_impactX_HGCal_layer_33;
+TBranch         *b_impactY_HGCal_layer_33;
+TBranch         *b_impactX_HGCal_layer_34;
+TBranch         *b_impactY_HGCal_layer_34;
+TBranch         *b_impactX_HGCal_layer_35;
+TBranch         *b_impactY_HGCal_layer_35;
+TBranch         *b_impactX_HGCal_layer_36;
+TBranch         *b_impactY_HGCal_layer_36;
+TBranch         *b_impactX_HGCal_layer_37;
+TBranch         *b_impactY_HGCal_layer_37;
+TBranch         *b_impactX_HGCal_layer_38;
+TBranch         *b_impactY_HGCal_layer_38;
+TBranch         *b_impactX_HGCal_layer_39;
+TBranch         *b_impactY_HGCal_layer_39;
+TBranch         *b_impactX_HGCal_layer_40;
+TBranch         *b_impactY_HGCal_layer_40;
+trackChi2_X;   //!
+trackChi2_Y;   //!
+dwcReferenceType;   //!
+m_x;   //!
+m_y;   //!
+b_x;   //!
+b_y;   //!
