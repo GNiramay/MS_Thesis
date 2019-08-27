@@ -1,0 +1,64 @@
+// To Analyse transverse leakage
+
+void LeakAna()
+{  
+  int ENERGY=200;
+  TString energy = "200";
+  // gStyle->SetOptStat(0);
+  gStyle->SetStatX(0.9);
+
+  // TFile* tf = new TFile("../MyCheckLeakage/TempOut.root");
+  TFile* tf = new TFile("../MyCheckLeakage/Pi_200_Sim_12_08_19.root");
+  // gStyle->SetOptStat(0);
+
+  TString HH[6] = {"1","2","3","4","5","6"}; // the index needed for following hists
+  TString DD[6]={"0 to 0.35","0.35 to 0.75","0.75 to 1.03","1.03 to 1.43","1.43 to 2.7","more than 2.7"};// The depth of each compartment
+
+  // for(int i=0;i<1;i++){
+  for(int i=0;i<6;i++){
+    TCanvas* tc = new TCanvas("aa","bb",900,600);
+    TH2F* HH1 = (TH2F*)tf->Get("Tot_Leak_Fr_EE_"+HH[i]);
+
+    HH1->SetTitle("HGCal Transverse leakage profile | Pion 200 GeV (Simulation)| Compartment "+HH[i]);
+    HH1->Draw("colz");
+    HH1->GetYaxis()->SetTitleOffset(1.4);
+    HH1->GetYaxis()->SetTitleSize(0.03);
+
+    gPad->Update();
+    TPaveStats* st1 = (TPaveStats*)HH1->FindObject("stats");
+    st1->SetY1NDC(0.75);
+    st1->SetY2NDC(0.9);
+    st1->SetX1NDC(0.75);
+    st1->SetX2NDC(0.9);
+    tc->Modified();
+
+    tc->SaveAs("PNG/LeakFr/Pion_"+energy+"_LeakFr_EE_"+HH[i]+".png"); 
+    tc->SaveAs("PDF/LeakFr/Pion_"+energy+"_LeakFr_EE_"+HH[i]+".pdf"); 
+    delete tc;
+ }
+
+  // for(int i=0;i<1;i++){
+  for(int i=0;i<6;i++){
+    TCanvas* tc = new TCanvas("aa","bb",900,600);
+    TH2F* HH1 = (TH2F*)tf->Get("Tot_Leak_Fr_FH_"+HH[i]);
+
+    HH1->SetTitle("HGCal Transverse leakage profile | Pion 200 GeV (Simulation)| Compartment "+HH[i]);
+    HH1->Draw("colz");
+    HH1->GetYaxis()->SetTitleOffset(1.4);
+
+
+    gPad->Update();
+    TPaveStats* st1 = (TPaveStats*)HH1->FindObject("stats");
+    st1->SetY1NDC(0.75);
+    st1->SetY2NDC(0.9);
+    st1->SetX1NDC(0.75);
+    st1->SetX2NDC(0.9);
+    tc->Modified();
+
+    HH1->GetYaxis()->SetTitleSize(0.03);
+    tc->SaveAs("PNG/LeakFr/Pion_"+energy+"_LeakFr_FH_"+HH[i]+".png"); 
+    tc->SaveAs("PDF/LeakFr/Pion_"+energy+"_LeakFr_FH_"+HH[i]+".pdf"); 
+    delete tc;
+ }
+
+}
