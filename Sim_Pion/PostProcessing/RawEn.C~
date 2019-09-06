@@ -1,0 +1,87 @@
+// To overlay total EE and FH rechit energy sum
+void FixtheStats(TCanvas*,TH1F*,Double_t,Double_t,int);
+
+void RawEn()
+{
+  TFile* tf = new TFile("../MyCheckLeakage/TempOut.root");
+  TString HH[6] = {"1","2","3","4","5","6"}; // the index needed for following hists
+  gStyle->SetOptStat(1111);
+  gStyle->SetStatX(0.9);
+
+  // for(int i=0;i<6;i++)
+  for(int i=2;i<3;i++)
+    {
+      TCanvas* tc = new TCanvas("aa","bb",800,600);
+      TLegend* tl = new TLegend(0.8,0.8,0.9,0.9);
+
+      TH1F* H1 = (TH1F*)tf->Get("EnEE_"+HH[i]);
+      TH1F* H2 = (TH1F*)tf->Get("EnFH_"+HH[i]);
+
+      // H1->Draw();
+      // H1->SetLineColor(2);H1->SetLineWidth(2);
+      // gPad->Update();
+      // TPaveStats* st1 = (TPaveStats*)H1->FindObject("stats");
+      // st1->SetTextColor(2);
+      // st1->SetY1NDC(0.75);
+      // st1->SetY2NDC(0.9);
+      // tc->Modified();
+
+      // H2->Draw();
+      // H2->SetLineColor(4);H2->SetLineWidth(2);
+      // gPad->Update();
+      // TPaveStats* st2 = (TPaveStats*)H2->FindObject("stats");
+      // st2->SetTextColor(4);
+      // st2->SetY1NDC(0.6);
+      // st2->SetY2NDC(0.75);
+      // tc->Modified();
+
+      tl->AddEntry(H1,"EE","l");
+      tl->AddEntry(H2,"FH","l");
+
+      Double_t m1 = H1->GetBinContent(H1->GetMaximumBin());
+      Double_t m2 = H2->GetBinContent(H2->GetMaximumBin());
+
+      if(m1>m2){
+	// H1->Draw("hist same");H2->Draw("hist same");
+	FixtheStats(tc,H1,0.75,0.9,2);
+	FixtheStats(tc,H2,0.6,0.75,4);
+      }
+      else{
+	// H2->Draw("hist same");H1->Draw("hist same");
+	FixtheStats(tc,H2,0.6,0.75,4);
+	FixtheStats(tc,H1,0.75,0.9,2);
+      }
+
+      // H1->SetLineColor(2);H1->SetLineWidth(2);
+      // gPad->Update();
+      // TPaveStats* st1 = (TPaveStats*)H1->FindObject("stats");
+      // st1->SetTextColor(2);
+      // st1->SetY1NDC(0.75);
+      // st1->SetY2NDC(0.9);
+      // tc->Modified();
+
+      // H2->SetLineColor(4);H2->SetLineWidth(2);
+      // gPad->Update();
+      // TPaveStats* st2 = (TPaveStats*)H2->FindObject("stats");
+      // st2->SetTextColor(4);
+      // st2->SetY1NDC(0.6);
+      // st2->SetY2NDC(0.75);
+      // tc->Modified();
+
+      // tl->Draw();
+    }
+
+}
+
+void FixtheStats(TCanvas* tc,TH1F* HIST,Double_t ymin,Double_t ymax,int col)
+{
+  HIST->Draw("hist sames");
+  HIST->SetLineColor(col);HIST->SetLineWidth(2);
+  gPad->Update();
+  TPaveStats* st1 = (TPaveStats*)HIST->FindObject("stats");
+  st1->SetTextColor(col);
+  st1->SetY1NDC(ymin);
+  st1->SetY2NDC(ymax);
+  tc->Modified();
+  // delete st1;
+}
