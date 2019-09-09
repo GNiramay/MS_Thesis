@@ -1,0 +1,1 @@
+scp ngogate@lxplus7.cern.ch:/afs/cern.ch/user/n/ngogate/Niramay_WorkSpace/public/Fifth_Year_Project/ShowerStart/CMSSW_9_3_0/src/HGCAL_analysis_code/ShowerFinder/Output_Root/All_200.root .

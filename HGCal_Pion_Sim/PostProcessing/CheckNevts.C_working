@@ -1,0 +1,68 @@
+// program to overlay nevts vs ss for data and MC
+// void MakeItOne(TH1F*);
+TGraph* MakeItOne(TH1F*);
+
+
+void CheckNevts()
+{
+  gStyle->SetOptStat(kFALSE);
+  TFile* tf1 = new TFile("CERN_Root_Files/All_200.root");   // Data
+  TFile* tf2 = new TFile("../MyCheckLeakage/TempOut.root"); // MC
+
+  TH1F* hh1 = (TH1F*)tf1->Get("h_shower_start");
+  TH1F* hh2 = (TH1F*)tf2->Get("h_shower_start");
+
+  TMultiGraph* tmg = new TMultiGraph();
+  TLegend* tl = new TLegend(0.8,0.8,0.9,0.9);
+
+  tmg->SetTitle("HGCal event statistics | Pion 200 GeV;Shower start depth (in #lambda); Frequency (Arbitrary unit)");
+
+  auto gg1 = MakeItOne(hh1);
+  auto gg2 = MakeItOne(hh2);
+  tmg->Add(gg1,"AP");
+  tmg->Add(gg2,"AP");
+
+  gg1->ResetAttMarker();
+  gg2->ResetAttMarker();
+
+  gg1->SetMarkerColor(1);
+  gg2->SetMarkerColor(2);
+
+  gg1->SetMarkerStyle(21);
+  gg2->SetMarkerStyle(21);
+
+  gg1->SetMarkerSize(0.75);
+  gg2->SetMarkerSize(0.75);
+
+  gg1->SetName("Data");
+  gg2->SetName("MC");
+
+  tl->AddEntry(gg1,"Data","p");
+  tl->AddEntry(gg2,"Simulation","p");
+
+  TCanvas* tc = new TCanvas("aa","b",800,600);
+  // tc->SetLogy();
+  tmg->Draw("AP");
+  tl->Draw();
+  tc->SaveAs("PNG/Nevts_SS.png");
+  tc->SaveAs("PDF/Nevts_SS.pdf");
+}
+
+TGraph* MakeItOne(TH1F* h)
+{
+  int NN = h->GetNbinsX();
+  Double_t EE = h->GetEntries();
+
+  vector<Double_t> xx,yy;
+
+  for(int i=0;i<NN;i++){
+    if(h->GetBinContent(i)!=0){
+      xx.push_back(h->GetBinCenter(i));
+      yy.push_back(h->GetBinContent(i)/EE);
+      h->SetBinContent(i,0);
+    }
+  }
+
+  TGraph* tg1 = new TGraph(xx.size(),&xx.at(0),&yy.at(0));
+  return(tg1);
+}

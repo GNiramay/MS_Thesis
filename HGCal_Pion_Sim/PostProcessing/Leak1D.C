@@ -1,0 +1,189 @@
+// 1D leakage plots
+#include "JustPlotIt.C"
+void MainPlot();
+TString DATE = "06_09_19";
+TString PATH_WWW="/afs/cern.ch/user/n/ngogate/www/PionShower/LeakFr_Abs_"+DATE+"/";
+TPaveStats* tps[5];
+bool IsLog = false;		// plot y-scale in log
+
+Double_t tx1[5]={0.7 , 0.7 , 0.7 , 0.5 , 0.5};
+Double_t tx2[5]={0.9 , 0.9 , 0.9 , 0.7 , 0.7};
+Double_t ty1[5]={0.7, 0.5, 0.3, 0.7, 0.5};
+Double_t ty2[5]={0.9, 0.7, 0.5, 0.9, 0.7};
+
+void Leak1D()
+{
+  MainPlot();
+  IsLog = true;
+  MainPlot();
+}
+
+void MainPlot()
+{
+  TFile* tf = new TFile("../MyCheckLeakage/TempOut.root");
+  TString HH[6] = {"1","2","3","4","5","6"}; // the index needed for following hists
+  TString DD[6]={"0 to 0.35","0.35 to 0.75","0.75 to 1.03","1.03 to 1.43","1.43 to 2.7","more than 2.7"};// The depth of each compartment
+  // gStyle->SetOptStat(false);
+
+  for(int i=0;i<6;i++){
+    // for(int i=0;i<1;i++){
+    TCanvas* tc = new TCanvas("aa","bb",900,600);
+    TLegend* tl;
+    if(IsLog){tl = new TLegend(0.45,0.8,0.9,0.9);tl->SetNColumns(2);}
+    else tl = new TLegend(0.6,0.6,0.9,0.9);
+
+    auto H1 = (TH1F*)tf->Get("TrLeakEE_"+HH[i]);
+    auto H2 = (TH1F*)tf->Get("TrLeakFH_"+HH[i]);
+    auto H3 = (TH1F*)tf->Get("TrLeakAH_"+HH[i]);
+    auto H4 = (TH1F*)tf->Get("TotTrLeak_"+HH[i]);
+    auto H5 = (TH1F*)tf->Get("LLeak_"+HH[i]);
+
+    // void ProperRange(TH1F*,TH1F*,TH1F*,TString);
+    // void ProperRange(TH1F*,TH1F*,TH1F*,TH1F*,TString);
+    void ProperRange(TCanvas*,TH1F*,TH1F*,TH1F*,TH1F*,TH1F*,TString);
+    
+    H1->SetLineWidth(2);
+    H2->SetLineWidth(2);
+    H3->SetLineWidth(2);
+    H4->SetLineWidth(2);
+    H5->SetLineWidth(2);
+
+    H1->SetName("EE Trans leakage");
+    H2->SetName("FH Trans leakage");
+    H3->SetName("AH Trans leakage");
+    H4->SetName("Total Trans leak");
+    H5->SetName("Longitudinal leak");
+
+
+    tl->AddEntry(H1,"Trans Leak EE","l");
+    tl->AddEntry(H2,"Trans Leak FH","l");
+    tl->AddEntry(H3,"Trans Leak AH","l");
+    tl->AddEntry(H4,"Total trans leakage","l");
+    tl->AddEntry(H5,"Longitudinal Leak","l");
+
+    // H5->SetTitle("HGCal leakage profile | compartment "+HH[i]);
+    // H5->GetXaxis()->SetTitle("Leakage (in GeV)");
+    // H5->GetYaxis()->SetTitle("No. of events");
+    // H5->Draw("hist same");
+
+    // H3->Draw("hist same");
+    // H1->Draw("hist same");
+    // H2->Draw("hist same");
+
+    // ProperRange(H1,H2,H3,HH[i]);
+    ProperRange(tc,H1,H2,H3,H4,H5,HH[i]);
+    H1->SetLineColor(1);tps[0]->SetTextColor(1);
+    H2->SetLineColor(2);tps[1]->SetTextColor(2);
+    H3->SetLineColor(6);tps[2]->SetTextColor(6);
+    H4->SetLineColor(3);tps[3]->SetTextColor(3);
+    H5->SetLineColor(4);tps[4]->SetTextColor(4);
+
+    // tl->Draw();
+
+    if(IsLog){
+      tc->SetLogy();
+      tc->SaveAs("PNG/Leak1D/Logy_Leak_"+HH[i]+"_"+DATE+".png");
+      tc->SaveAs("PDF/Leak1D/Logy_Leak_"+HH[i]+"_"+DATE+".pdf");
+    }
+    else{
+      tc->SaveAs("PNG/Leak1D/Leak_"+HH[i]+"_"+DATE+".png");
+      tc->SaveAs("PDF/Leak1D/Leak_"+HH[i]+"_"+DATE+".pdf");
+    }
+
+    delete tc;
+
+  }
+  // gSystem->Exec("scp "+DATE+".png ngogate@lxplus7.cern.ch:"+PATH_WWW);
+}
+
+// void ProperRange(TH1F* H1,TH1F* H2,TH1F* H3,TString cc)
+// {
+//   Double_t m1 = H1->GetBinContent(H1->GetMaximumBin());
+//   Double_t m2 = H2->GetBinContent(H2->GetMaximumBin());
+//   Double_t m3 = H3->GetBinContent(H3->GetMaximumBin());
+
+//   if(m3>m2 && m3>m1){    H3->SetTitle("Transverse leakage profile | compartment "+cc);
+//     H3->GetXaxis()->SetTitle("Leakage (in GeV)");
+//     H3->GetYaxis()->SetTitle("No. of events");
+
+//     H3->Draw("hist same");
+//     H1->Draw("hist same");
+//     H2->Draw("hist same");
+//   }
+
+//   else if(m2>m3 && m2>m1){    H2->SetTitle("Transverse leakage profile | compartment "+cc);
+//     H2->GetXaxis()->SetTitle("Leakage (in GeV)");
+//     H2->GetYaxis()->SetTitle("No. of events");
+
+//     H2->Draw("hist same");
+//     H1->Draw("hist same");
+//     H3->Draw("hist same");
+//   }
+
+//   else{    H1->SetTitle("Transverse leakage profile | compartment "+cc);
+//     H1->GetXaxis()->SetTitle("Leakage (in GeV)");
+//     H1->GetYaxis()->SetTitle("No. of events");
+
+//     H1->Draw("hist same");
+//     H2->Draw("hist same");
+//     H3->Draw("hist same");
+//   }
+
+// }
+
+void ProperRange(TCanvas* tc,TH1F* H1,TH1F* H2,TH1F* H3,TH1F* H4,TH1F* H5, TString cc)
+{
+  vector<TH1F*>HIST; HIST.clear();
+  vector<Double_t>MEAN; MEAN.clear();
+
+  Double_t m1 = H1->GetBinContent(H1->GetMaximumBin());MEAN.push_back(m1);
+  Double_t m2 = H2->GetBinContent(H2->GetMaximumBin());MEAN.push_back(m2);
+  Double_t m3 = H3->GetBinContent(H3->GetMaximumBin());MEAN.push_back(m3);
+  Double_t m4 = H4->GetBinContent(H4->GetMaximumBin());MEAN.push_back(m4);
+  Double_t m5 = H5->GetBinContent(H5->GetMaximumBin());MEAN.push_back(m5);
+
+  HIST.push_back(H1);
+  HIST.push_back(H2);
+  HIST.push_back(H3);
+  HIST.push_back(H4);
+  HIST.push_back(H5);
+
+  int IMAX=0;
+  Double_t VMAX=m1;
+
+  for(int i=1;i<5;i++) if(VMAX<MEAN[i]){IMAX = i;VMAX = MEAN[i];}
+
+  HIST[IMAX]->GetXaxis()->SetTitle("Leakage (in GeV)");
+  HIST[IMAX]->GetYaxis()->SetTitle("No. of events");
+  HIST[IMAX]->SetTitle("HGCal leakage profile | compartment "+cc+" | 200 GeV Pion (Sim)");
+  HIST[IMAX]->Draw("hist sames");
+
+  gPad->Update();
+  tps[IMAX] = (TPaveStats*)HIST[IMAX]->FindObject("stats");
+  // HIST[IMAX]->SetLineColor(3);
+  // tps[IMAX]->SetTextColor(3);
+
+  tps[IMAX]->SetY1NDC(ty1[IMAX]);
+  tps[IMAX]->SetY2NDC(ty2[IMAX]);
+  tps[IMAX]->SetX1NDC(tx1[IMAX]);
+  tps[IMAX]->SetX2NDC(tx2[IMAX]);
+  tc->Modified();
+
+  // tps[IMAX]=tempp;
+
+  for(int i=0;i<5;i++){
+    if(i!=IMAX){
+      HIST[i]->Draw("hist sames");
+      gPad->Update();
+      tps[i] = (TPaveStats*)HIST[i]->FindObject("stats");
+      // HIST[i]->SetLineColor(3);
+      // tps[i]->SetTextColor(3);
+      
+      tps[i]->SetY1NDC(ty1[i]);
+      tps[i]->SetY2NDC(ty2[i]);
+      tps[i]->SetX1NDC(tx1[i]);
+      tps[i]->SetX2NDC(tx2[i]);
+      tc->Modified();
+    }
+  }
+}
