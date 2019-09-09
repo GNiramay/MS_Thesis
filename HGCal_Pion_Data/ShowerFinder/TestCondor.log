@@ -1,0 +1,12 @@
+007 (1703307.000.000) 07/29 06:38:58 Shadow exception!
+	Error from slot1_5@b7g28n0404.cern.ch: SHADOW at 188.185.71.142 failed to send file(s) to <188.184.133.26:33370>: error reading from /afs/cern.ch/work/n/ngogate/public/Fifth_Year_Project/ShowerStart/CMSSW_9_3_0/src/HGCAL_analysis_code/ShowerFinder/TestExecutable: (errno 2) No such file or directory; STARTER failed to receive file(s) from <188.185.71.142:9618>
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+012 (1703307.000.000) 07/29 06:38:58 Job was held.
+	Error from slot1_5@b7g28n0404.cern.ch: SHADOW at 188.185.71.142 failed to send file(s) to <188.184.133.26:33370>: error reading from /afs/cern.ch/work/n/ngogate/public/Fifth_Year_Project/ShowerStart/CMSSW_9_3_0/src/HGCAL_analysis_code/ShowerFinder/TestExecutable: (errno 2) No such file or directory; STARTER failed to receive file(s) from <188.185.71.142:9618>
+	Code 13 Subcode 2
+...
+009 (1703307.000.000) 07/30 06:39:01 Job was aborted by the user.
+	The system macro SYSTEM_PERIODIC_REMOVE expression '(JobUniverse == 5 && JobStatus == 2 && (MaxRuntime =!= undefined) && (BenchmarkJob =!= true) && ((CurrentTime - JobCurrentStartExecutingDate) > MaxRuntime)) || (JobUniverse == 5 && JobStatus == 1 && (CurrentTime - EnteredCurrentStatus > 86400 * 10)) || (JobStatus == 5 && CurrentTime - EnteredCurrentStatus > 3600 * 24) || (ResidentSetSize_RAW > 10000 * RequestMemory) || (NumJobStarts > 10) || (DiskUsage > 1.5 * ((TARGET.TotalDisk / TARGET.DetectedCpus) * RequestCpus)) || (HoldReasonCode =?= 33)' evaluated to TRUE
+...

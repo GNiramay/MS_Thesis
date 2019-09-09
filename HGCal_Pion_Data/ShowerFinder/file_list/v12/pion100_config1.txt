@@ -1,0 +1,11 @@
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_552.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_553.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_554.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_555.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_556.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_557.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_558.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_559.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_560.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_561.root
+/eos/user/s/spandey/HGCalTB/OctTB/hgcal_ahcal_samples/v12_v2//pion100/fulltree_562.root
